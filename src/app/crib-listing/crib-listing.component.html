@@ -1,3 +1,5 @@
-<p>
-  crib-listing works!
-</p>
+<!-- <pre>{{ cribs | json }}</pre> -->
+
+<div *ngFor="let crib of cribs">
+  <app-crib-card [crib]="crib" class="col-sm-4"></app-crib-card> <!-- (Property Binding) Pass data into child component -->
+</div>
