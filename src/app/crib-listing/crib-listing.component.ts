@@ -18,7 +18,7 @@ export class CribListingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
+    // use 'getAllCribs()' from CribsService
     this.cribsService.getAllCribs()
       .subscribe(
         // data => console.log(data) // see data in the console
