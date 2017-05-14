@@ -1,7 +1,12 @@
 .thumbnail {
-  min-height: 440px;
+  min-height: 400px;
 }
 
 label {
+  display: inline-block;
+}
+
+.details h4 span {
+  margin-bottom: 4px;
   display: inline-block;
 }

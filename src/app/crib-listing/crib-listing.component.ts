@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http'; // allow Http Request
 import { CribsService } from './../services/cribs.service';
+import { UtilService } from './../services/util.service';
 
 @Component({
   selector: 'app-crib-listing',
@@ -11,10 +12,21 @@ export class CribListingComponent implements OnInit {
 
   cribs: Array<any>;
   error: string;
+  sortField: string = 'price'; // the default
+  sortFields: Array<string> = [
+    'address',
+    'area',
+    'bedrooms',
+    'bathrooms',
+    'price',
+    'type'
+  ];
+  sortDirection: string = 'asc'; // 'asc' as the default
 
   constructor(
     private http: Http, // a private instance of Http
-    private cribsService: CribsService
+    private cribsService: CribsService,
+    private utilService: UtilService
   ) { }
 
   ngOnInit() {
@@ -28,7 +40,7 @@ export class CribListingComponent implements OnInit {
     this.cribsService.newCribSubject.subscribe(
       // data => console.log(data)
       // data => this.cribs.push(data) // will add new data to the end of array
-      data => this.cribs = [data, ...this.cribs] /* Spread method, will create a new array where new data will be first, and then whatever data follows */ 
+      data => this.cribs = [data, ...this.cribs] /* Spread method, will create a new array where new data will be first, and then whatever data follows */
     );
 
   }
